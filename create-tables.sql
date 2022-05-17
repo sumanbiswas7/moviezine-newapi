@@ -1,8 +1,12 @@
-CREATE TABLE users (
-    user_id BIGSERIAL PRIMARY KEY NOT NULL,
-    user_name VARCHAR (50) NOT NULL,
-    user_email VARCHAR (255) UNIQUE,
-    user_country VARCHAR(50)
+CREATE TABLE movies (
+    movie_id BIGSERIAL PRIMARY KEY NOT NULL,
+    movie_name VARCHAR (70) NOT NULL,
+    movie_director VARCHAR (50) NOT NULL,
+    movie_release INT NOT NULL,
+    movie_image TEXT,
+    movie_description TEXT,
+    movie_type VARCHAR(50),
+    movie_cast VARCHAR(100)
 );
 
 CREATE TABLE posts (
@@ -32,3 +36,7 @@ CREATE TABLE comments (
 );
 
 -- \i 'C:/Projects/moviezine/new-api/create-tables.sql'
+INSERT INTO
+    movies (movie_name, movie_director, movie_release)
+VALUES
+    ('Intersteller', 'Christopher Nolan', 2012);
