@@ -46,10 +46,26 @@ const typeDefs = gql`
     movie_comment_count: Int
   }
 
+  input addMovie {
+    movie_name: String!
+    movie_director: String!
+    movie_release: Int!
+    movie_rating: Float
+    movie_image: String
+    movie_description: String
+    movie_type: String
+    movie_casts: String
+    movie_fk: Int!
+  }
+
   type Query {
     getmovies: [Movie]
     getusers: [User]
     movies: [MovieUser]
+  }
+
+  type Mutation {
+    addMovie(movie: addMovie!): String
   }
 `;
 
