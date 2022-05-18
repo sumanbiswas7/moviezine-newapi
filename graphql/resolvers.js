@@ -18,87 +18,60 @@ const resolvers = {
   },
   Mutation: {
     addMovie: async (parents, args, ctx) => {
-      const {
-        movie_name,
-        movie_director,
-        movie_release,
-        movie_rating,
-        movie_image,
-        movie_description,
-        movie_type,
-        movie_casts,
-        movie_fk,
-      } = args.movie;
+      const data = args.movie;
       await db.query(queries.addmovie, [
-        movie_name,
-        movie_director,
-        movie_release,
-        movie_image,
-        movie_description,
-        movie_type,
-        movie_rating,
-        movie_casts,
-        movie_fk,
+        data.movie_name,
+        data.movie_director,
+        data.movie_release,
+        data.movie_image,
+        data.movie_description,
+        data.movie_type,
+        data.movie_rating,
+        data.movie_casts,
+        data.movie_fk,
       ]);
       return "Movie added";
     },
 
     addUser: async (parents, args, ctx) => {
-      const {
-        user_name,
-        user_password,
-        user_email,
-        user_profile,
-        user_country,
-      } = args.user;
+      const data = args.user;
 
       await db.query(queries.adduser, [
-        user_name,
-        user_password,
-        user_email,
-        user_profile,
-        user_country,
+        data.user_name,
+        data.user_password,
+        data.user_email,
+        data.user_profile,
+        data.user_country,
       ]);
 
       return "User added";
     },
     updateUser: async (parents, args, ctx) => {
-      const { ID, user_name, user_email, user_country, user_profile } =
-        args.user;
+      const data = args.user;
 
       await db.query(queries.updateuser, [
-        user_name,
-        user_email,
-        user_country,
-        user_profile,
-        ID,
+        data.user_name,
+        data.user_email,
+        data.user_country,
+        data.user_profile,
+        data.ID,
       ]);
 
       return "User updated";
     },
 
     updateMovie: async (parents, args, ctx) => {
-      const {
-        ID,
-        movie_name,
-        movie_director,
-        movie_release,
-        movie_rating,
-        movie_image,
-        movie_description,
-        movie_type,
-        movie_casts,
-      } = args.movie;
+      const data = args.movie;
       await db.query(queries.updatemovie, [
-        movie_name,
-        movie_director,
-        movie_release,
-        movie_image,
-        movie_description,
-        movie_type,
-        movie_rating,
-        movie_casts,
-        ID,
+        data.movie_name,
+        data.movie_director,
+        data.movie_release,
+        data.movie_image,
+        data.movie_description,
+        data.movie_type,
+        data.movie_rating,
+        data.movie_casts,
+        data.ID,
       ]);
       return "Movie updated";
     },

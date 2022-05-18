@@ -59,7 +59,6 @@ const typeDefs = gql`
   }
 
   input addUser {
-    user_id: Int
     user_name: String!
     user_password: String!
     user_email: String
