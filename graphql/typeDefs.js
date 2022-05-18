@@ -97,6 +97,7 @@ const typeDefs = gql`
     addUser(user: addUser!): String
     updateUser(user: updateUser!): String
     updateMovie(movie: updateMovie!): String
+    deleteMovie(movieId: Int!): String
   }
 `;
 

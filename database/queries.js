@@ -11,6 +11,7 @@ const queries = {
     "UPDATE users SET user_name = $1, user_email = $2, user_country = $3, user_profile = $4 WHERE user_id = $5",
   updatemovie:
     "UPDATE movies SET movie_name = $1, movie_director = $2, movie_release = $3, movie_image = $4, movie_description = $5, movie_type = $6, movie_rating = $7, movie_casts = $8 WHERE movie_id = $9",
+  deletemovie: "DELETE FROM movies WHERE movie_id = $1",
 };
 
 module.exports = { queries };

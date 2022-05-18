@@ -102,6 +102,12 @@ const resolvers = {
       ]);
       return "Movie updated";
     },
+
+    deleteMovie: async (parents, args, ctx) => {
+      const movie_id = args.movieId;
+      await db.query(queries.deletemovie, [movie_id]);
+      return "Movie deleted";
+    },
   },
 };
 
