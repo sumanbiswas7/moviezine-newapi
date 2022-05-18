@@ -1,5 +1,6 @@
 const { db } = require("../database/database");
 const { queries } = require("../database/queries");
+const moment = require("moment");
 
 const resolvers = {
   Query: {
@@ -13,6 +14,10 @@ const resolvers = {
     },
     movies: async () => {
       const res = await db.query(queries.movies);
+      return res.rows;
+    },
+    likes: async () => {
+      const res = await db.query(queries.likes);
       return res.rows;
     },
   },
@@ -94,7 +99,8 @@ const resolvers = {
 
         return `Liked deleted UID - ${user_id}, MID - ${movie_id}`;
       } else {
-        await db.query(queries.like.addLike, [movie_id, user_id, new Date()]);
+        const timestamp = moment().format("MMMM Do YYYY, h:mm:ss a");
+        await db.query(queries.like.addLike, [movie_id, user_id, timestamp]);
         await db.query(queries.like.movieCount, [likeCount + 1, movie_id]);
 
         return `Liked added MID - ${movie_id} UID - ${user_id}`;

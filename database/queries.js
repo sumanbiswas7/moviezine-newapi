@@ -12,6 +12,8 @@ const queries = {
   updatemovie:
     "UPDATE movies SET movie_name = $1, movie_director = $2, movie_release = $3, movie_image = $4, movie_description = $5, movie_type = $6, movie_rating = $7, movie_casts = $8 WHERE movie_id = $9",
   deletemovie: "DELETE FROM movies WHERE movie_id = $1",
+  likes:
+    "SELECT * FROM likes INNER JOIN users ON likes.like_user_fk = users.user_id",
   like: {
     ifLikeExist:
       "SELECT * FROM likes WHERE like_user_fk = $1 AND like_movie_fk = $2",

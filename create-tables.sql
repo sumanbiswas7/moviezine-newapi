@@ -27,7 +27,7 @@ CREATE TABLE likes (
     like_id BIGSERIAL PRIMARY KEY NOT NULL,
     like_movie_fk INT NOT NULL,
     like_user_fk INT NOT NULL,
-    like_timestamp TIMESTAMP NOT NULL,
+    like_timestamp VARCHAR(100) NOT NULL,
     CONSTRAINT fk_like_post FOREIGN KEY (like_movie_fk) REFERENCES movies(movie_id),
     CONSTRAINT fk_like_user FOREIGN KEY (like_user_fk) REFERENCES users(user_id)
 );

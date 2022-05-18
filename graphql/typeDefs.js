@@ -46,6 +46,19 @@ const typeDefs = gql`
     movie_comment_count: Int
   }
 
+  type UserLike {
+    user_id: Int
+    user_name: String
+    user_email: String
+    user_password: String
+    user_country: String
+    user_profile: String
+    like_id: Int
+    like_movie_fk: Int
+    like_user_fk: Int
+    like_timestamp: String
+  }
+
   input addMovie {
     movie_name: String!
     movie_director: String!
@@ -94,6 +107,7 @@ const typeDefs = gql`
     getmovies: [Movie]
     getusers: [User]
     movies: [MovieUser]
+    likes: [UserLike]
   }
 
   type Mutation {
