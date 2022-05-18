@@ -1,4 +1,34 @@
 INSERT INTO
+    users (
+        user_name,
+        user_email,
+        user_password,
+        user_profile
+    )
+VALUES
+    (
+        'Suman Biswas',
+        'suman@email.com',
+        'itssuman69',
+        'https://picsum.photos/300'
+    );
+
+INSERT INTO
+    users (
+        user_name,
+        user_email,
+        user_password,
+        user_profile
+    )
+VALUES
+    (
+        'Jacob Saminathan',
+        'jcsm@email.com',
+        'itsjackobppp',
+        'https://picsum.photos/300'
+    );
+
+INSERT INTO
     movies (
         movie_name,
         movie_director,
@@ -54,15 +84,3 @@ VALUES
     );
 
 -- \i 'C:/Projects/moviezine/new-api/insert-data.sql'
--- INSERT INTO
---     users (user_name, user_email, user_password)
--- VALUES
---     ('Suman Biswas', 'suman@email.com', 'itssuman69');
--- INSERT INTO
---     users (user_name, user_email, user_password)
--- VALUES
---     (
---         'Jacob Saminathan',
---         'jcsm@email.com',
---         'itsjackobppp'
---     );

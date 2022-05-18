@@ -3,7 +3,8 @@ CREATE TABLE users (
     user_name VARCHAR (50) NOT NULL,
     user_email VARCHAR (255) UNIQUE,
     user_password VARCHAR (255),
-    user_country VARCHAR(50)
+    user_country VARCHAR(50),
+    user_profile TEXT
 );
 
 CREATE TABLE movies (
@@ -16,6 +17,8 @@ CREATE TABLE movies (
     movie_type VARCHAR(50),
     movie_rating FLOAT,
     movie_casts VARCHAR(100),
+    movie_like_count INT,
+    movie_comment_count INT,
     movie_fk INT NOT NULL,
     CONSTRAINT fk_user FOREIGN KEY (movie_fk) REFERENCES users(user_id)
 );
