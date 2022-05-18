@@ -42,6 +42,26 @@ const resolvers = {
       ]);
       return "Movie added";
     },
+
+    addUser: async (parents, args, ctx) => {
+      const {
+        user_name,
+        user_password,
+        user_email,
+        user_profile,
+        user_country,
+      } = args.user;
+
+      await db.query(queries.adduser, [
+        user_name,
+        user_password,
+        user_email,
+        user_profile,
+        user_country,
+      ]);
+
+      return "User added";
+    },
   },
 };
 

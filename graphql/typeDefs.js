@@ -58,6 +58,14 @@ const typeDefs = gql`
     movie_fk: Int!
   }
 
+  input addUser {
+    user_name: String!
+    user_password: String!
+    user_email: String
+    user_country: String
+    user_profile: String
+  }
+
   type Query {
     getmovies: [Movie]
     getusers: [User]
@@ -66,6 +74,7 @@ const typeDefs = gql`
 
   type Mutation {
     addMovie(movie: addMovie!): String
+    addUser(user: addUser!): String
   }
 `;
 
