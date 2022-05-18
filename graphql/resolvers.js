@@ -62,6 +62,46 @@ const resolvers = {
 
       return "User added";
     },
+    updateUser: async (parents, args, ctx) => {
+      const { ID, user_name, user_email, user_country, user_profile } =
+        args.user;
+
+      await db.query(queries.updateuser, [
+        user_name,
+        user_email,
+        user_country,
+        user_profile,
+        ID,
+      ]);
+
+      return "User updated";
+    },
+
+    updateMovie: async (parents, args, ctx) => {
+      const {
+        ID,
+        movie_name,
+        movie_director,
+        movie_release,
+        movie_rating,
+        movie_image,
+        movie_description,
+        movie_type,
+        movie_casts,
+      } = args.movie;
+      await db.query(queries.updatemovie, [
+        movie_name,
+        movie_director,
+        movie_release,
+        movie_image,
+        movie_description,
+        movie_type,
+        movie_rating,
+        movie_casts,
+        ID,
+      ]);
+      return "Movie updated";
+    },
   },
 };
 
