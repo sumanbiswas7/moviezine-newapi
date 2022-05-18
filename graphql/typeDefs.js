@@ -85,6 +85,11 @@ const typeDefs = gql`
     movie_casts: String
   }
 
+  input likeMovie {
+    user_id: Int!
+    movie_id: Int!
+    likeCount: Int!
+  }
   type Query {
     getmovies: [Movie]
     getusers: [User]
@@ -97,6 +102,7 @@ const typeDefs = gql`
     updateUser(user: updateUser!): String
     updateMovie(movie: updateMovie!): String
     deleteMovie(movieId: Int!): String
+    likeMovie(likeData: likeMovie!): String
   }
 `;
 

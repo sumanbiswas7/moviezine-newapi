@@ -12,6 +12,14 @@ const queries = {
   updatemovie:
     "UPDATE movies SET movie_name = $1, movie_director = $2, movie_release = $3, movie_image = $4, movie_description = $5, movie_type = $6, movie_rating = $7, movie_casts = $8 WHERE movie_id = $9",
   deletemovie: "DELETE FROM movies WHERE movie_id = $1",
+  like: {
+    ifLikeExist:
+      "SELECT * FROM likes WHERE like_user_fk = $1 AND like_movie_fk = $2",
+    delete: "DELETE FROM LIKES WHERE like_movie_fk = $1 AND like_user_fk = $2",
+    movieCount: "UPDATE movies SET movie_like_count = $1 WHERE movie_id = $2",
+    addLike:
+      "INSERT INTO likes (like_movie_fk, like_user_fk, like_timestamp) VALUES ($1,$2,$3)",
+  },
 };
 
 module.exports = { queries };

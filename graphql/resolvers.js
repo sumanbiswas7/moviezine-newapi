@@ -81,6 +81,25 @@ const resolvers = {
       await db.query(queries.deletemovie, [movie_id]);
       return "Movie deleted";
     },
+
+    likeMovie: async (parent, args, ctx) => {
+      const { movie_id, user_id, likeCount } = args.likeData;
+      const isLikeExist = await db.query(queries.like.ifLikeExist, [
+        user_id,
+        movie_id,
+      ]);
+      if (isLikeExist.rows.length > 0) {
+        await db.query(queries.like.delete, [movie_id, user_id]);
+        await db.query(queries.like.movieCount, [likeCount - 1, movie_id]);
+
+        return `Liked deleted UID - ${user_id}, MID - ${movie_id}`;
+      } else {
+        await db.query(queries.like.addLike, [movie_id, user_id, new Date()]);
+        await db.query(queries.like.movieCount, [likeCount + 1, movie_id]);
+
+        return `Liked added MID - ${movie_id} UID - ${user_id}`;
+      }
+    },
   },
 };
 

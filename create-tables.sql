@@ -25,10 +25,11 @@ CREATE TABLE movies (
 
 CREATE TABLE likes (
     like_id BIGSERIAL PRIMARY KEY NOT NULL,
-    like_fk INT NOT NULL,
-    like_by VARCHAR(50),
+    like_movie_fk INT NOT NULL,
+    like_user_fk INT NOT NULL,
     like_timestamp TIMESTAMP NOT NULL,
-    CONSTRAINT fk_like_posts FOREIGN KEY (like_fk) REFERENCES movies(movie_id)
+    CONSTRAINT fk_like_post FOREIGN KEY (like_movie_fk) REFERENCES movies(movie_id),
+    CONSTRAINT fk_like_user FOREIGN KEY (like_user_fk) REFERENCES users(user_id)
 );
 
 CREATE TABLE comments (
