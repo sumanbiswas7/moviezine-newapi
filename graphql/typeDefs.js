@@ -59,6 +59,7 @@ const typeDefs = gql`
     like_timestamp: String
   }
   type Comment {
+    comment_id: Int
     comment_movie_fk: Int!
     comment_user_fk: Int!
     comment_text: String!
@@ -132,13 +133,17 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    likeMovie(likeData: likeMovie!): String
+
     addMovie(movie: addMovie!): String
     addUser(user: addUser!): String
+    addComment(commentInput: commentInput!): String
+
     updateUser(user: updateUser!): String
     updateMovie(movie: updateMovie!): String
+
     deleteMovie(movieId: Int!): String
-    likeMovie(likeData: likeMovie!): String
-    addComment(commentInput: commentInput!): String
+    deleteComment(commentId: Int!): String
   }
 `;
 

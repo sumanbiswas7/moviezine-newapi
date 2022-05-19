@@ -17,7 +17,7 @@ const resolvers = {
       return res.rows;
     },
     likes: async () => {
-      const res = await db.query(queries.likes);
+      const res = await db.query(queries.like.likes);
       return res.rows;
     },
     comments: async (parent, args, ctx) => {
@@ -128,6 +128,12 @@ const resolvers = {
       ]);
 
       return `Comment added`;
+    },
+
+    deleteComment: async (parent, args, ctx) => {
+      const commentId = args.commentId;
+      db.query(queries.comment.deleteComment, [commentId]);
+      return "Comment deleted";
     },
   },
 };
