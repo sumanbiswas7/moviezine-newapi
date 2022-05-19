@@ -58,6 +58,18 @@ const typeDefs = gql`
     like_user_fk: Int
     like_timestamp: String
   }
+  type Comment {
+    comment_movie_fk: Int!
+    comment_user_fk: Int!
+    comment_text: String!
+    comment_timestamp: String!
+    user_id: Int!
+    user_name: String!
+    user_email: String
+    user_password: String
+    user_country: String
+    user_profile: String
+  }
 
   input addMovie {
     movie_name: String!
@@ -103,11 +115,20 @@ const typeDefs = gql`
     movie_id: Int!
     likeCount: Int!
   }
+  input commentInput {
+    comment_movie_fk: Int!
+    comment_user_fk: Int!
+    comment_text: String!
+    comment_count: Int!
+    comment_timestamp: String
+  }
+
   type Query {
     getmovies: [Movie]
     getusers: [User]
     movies: [MovieUser]
     likes: [UserLike]
+    comments(movieId: Int!): [Comment]
   }
 
   type Mutation {
@@ -117,6 +138,7 @@ const typeDefs = gql`
     updateMovie(movie: updateMovie!): String
     deleteMovie(movieId: Int!): String
     likeMovie(likeData: likeMovie!): String
+    addComment(commentInput: commentInput!): String
   }
 `;
 

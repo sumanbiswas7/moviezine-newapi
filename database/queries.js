@@ -20,6 +20,7 @@ const queries = {
   deletemovie: "DELETE FROM movies WHERE movie_id = $1",
   likes:
     "SELECT * FROM likes INNER JOIN users ON likes.like_user_fk = users.user_id",
+
   like: {
     ifLikeExist:
       "SELECT * FROM likes WHERE like_user_fk = $1 AND like_movie_fk = $2",
@@ -27,6 +28,22 @@ const queries = {
     movieCount: "UPDATE movies SET movie_like_count = $1 WHERE movie_id = $2",
     addLike:
       "INSERT INTO likes (like_movie_fk, like_user_fk, like_timestamp) VALUES ($1,$2,$3)",
+  },
+
+  comment: {
+    comments: `SELECT * FROM comments
+                  INNER JOIN users ON
+                  comments.comment_user_fk = users.user_id
+                  WHERE comments.comment_movie_fk = $1`,
+
+    addComment: `INSERT INTO comments
+                  (comment_movie_fk, comment_user_fk, comment_text, comment_timestamp)
+                  VALUES ($1, $2, $3, $4)`,
+
+    movieCount:
+      "UPDATE movies SET movie_comment_count = $1 WHERE movie_id = $2",
+
+    deleteComment: "DELETE FROM comments WHERE comment_id = $1",
   },
 };
 

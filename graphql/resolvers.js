@@ -20,6 +20,11 @@ const resolvers = {
       const res = await db.query(queries.likes);
       return res.rows;
     },
+    comments: async (parent, args, ctx) => {
+      const movieId = args.movieId;
+      const res = await db.query(queries.comment.comments, [movieId]);
+      return res.rows;
+    },
   },
   Mutation: {
     addMovie: async (parents, args, ctx) => {
@@ -105,6 +110,24 @@ const resolvers = {
 
         return `Liked added MID - ${movie_id} UID - ${user_id}`;
       }
+    },
+
+    addComment: async (parent, args, ctx) => {
+      const timestamp = moment().format("MMMM Do YYYY, h:mm:ss a");
+      const data = args.commentInput;
+
+      await db.query(queries.comment.movieCount, [
+        data.comment_count + 1,
+        data.comment_movie_fk,
+      ]);
+      await db.query(queries.comment.addComment, [
+        data.comment_movie_fk,
+        data.comment_user_fk,
+        data.comment_text,
+        timestamp,
+      ]);
+
+      return `Comment added`;
     },
   },
 };

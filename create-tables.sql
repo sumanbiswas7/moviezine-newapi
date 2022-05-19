@@ -36,7 +36,6 @@ CREATE TABLE comments (
     comment_id BIGSERIAL PRIMARY KEY NOT NULL,
     comment_movie_fk INT NOT NULL,
     comment_user_fk INT NOT NULL,
-    comment_by VARCHAR(50),
     comment_text VARCHAR(100) NOT NULL,
     comment_timestamp VARCHAR(100) NOT NULL,
     CONSTRAINT fk_comment_post FOREIGN KEY (comment_movie_fk) REFERENCES movies(movie_id),
