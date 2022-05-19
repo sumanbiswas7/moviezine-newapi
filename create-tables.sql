@@ -34,11 +34,13 @@ CREATE TABLE likes (
 
 CREATE TABLE comments (
     comment_id BIGSERIAL PRIMARY KEY NOT NULL,
-    comment_fk INT NOT NULL,
+    comment_movie_fk INT NOT NULL,
+    comment_user_fk INT NOT NULL,
     comment_by VARCHAR(50),
-    comment_text VARCHAR(100),
-    comment_timestamp TIMESTAMP NOT NULL,
-    CONSTRAINT fk_comment_posts FOREIGN KEY (comment_fk) REFERENCES movies(movie_id)
+    comment_text VARCHAR(100) NOT NULL,
+    comment_timestamp VARCHAR(100) NOT NULL,
+    CONSTRAINT fk_comment_post FOREIGN KEY (comment_movie_fk) REFERENCES movies(movie_id),
+    CONSTRAINT fk_comment_user FOREIGN KEY (comment_user_fk) REFERENCES users(user_id)
 );
 
 -- \i 'C:/Projects/moviezine/new-api/create-tables.sql'
