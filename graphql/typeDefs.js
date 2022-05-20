@@ -114,13 +114,13 @@ const typeDefs = gql`
   input likeMovie {
     user_id: Int!
     movie_id: Int!
-    like_arr: String!
+    like_arr: [Int!]
   }
   input commentInput {
     comment_movie_fk: Int!
     comment_user_fk: Int!
     comment_text: String!
-    comment_arr: String!
+    comment_arr: [Int!]
     comment_timestamp: String
   }
 

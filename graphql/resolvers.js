@@ -94,14 +94,14 @@ const resolvers = {
 
     likeMovie: async (parent, args, ctx) => {
       const { movie_id, user_id, like_arr } = args.likeData;
-
+      const convertedArr = `{${like_arr}}`;
       const isLikeExist = await db.query(queries.like.ifLikeExist, [
         user_id,
         movie_id,
       ]);
       if (isLikeExist.rows.length > 0) {
         await db.query(queries.like.delete, [movie_id, user_id]);
-        await db.query(queries.like.movieCount, [like_arr, movie_id]);
+        await db.query(queries.like.movieCount, [convertedArr, movie_id]);
 
         return `Liked deleted UID - ${user_id}, MID - ${movie_id}`;
       } else {
@@ -116,9 +116,9 @@ const resolvers = {
     addComment: async (parent, args, ctx) => {
       const timestamp = moment().format("MMMM Do YYYY, h:mm:ss a");
       const data = args.commentInput;
-
+      const convertedArr = `{${data.comment_arr}}`;
       await db.query(queries.comment.movieCount, [
-        data.comment_arr,
+        convertedArr,
         data.comment_movie_fk,
       ]);
       await db.query(queries.comment.addComment, [
