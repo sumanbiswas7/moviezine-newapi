@@ -17,8 +17,8 @@ CREATE TABLE movies (
     movie_type VARCHAR(50),
     movie_rating FLOAT,
     movie_casts VARCHAR(100),
-    movie_like_count INT,
-    movie_comment_count INT,
+    movie_like_arr INT ARRAY,
+    movie_comment_arr INT ARRAY,
     movie_fk INT NOT NULL,
     CONSTRAINT fk_user FOREIGN KEY (movie_fk) REFERENCES users(user_id)
 );

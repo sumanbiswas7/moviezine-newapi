@@ -12,8 +12,8 @@ const typeDefs = gql`
     movie_type: String
     movie_cast: String
     movie_fk: Int!
-    movie_like_count: Int
-    movie_comment_count: Int
+    movie_like_arr: [Int]
+    movie_comment_arr: [Int]
   }
 
   type User {
@@ -42,8 +42,8 @@ const typeDefs = gql`
     movie_type: String
     movie_cast: String
     movie_fk: Int!
-    movie_like_count: Int
-    movie_comment_count: Int
+    movie_like_arr: [Int]
+    movie_comment_arr: [Int]
   }
 
   type UserLike {
@@ -114,13 +114,13 @@ const typeDefs = gql`
   input likeMovie {
     user_id: Int!
     movie_id: Int!
-    likeCount: Int!
+    like_arr: String!
   }
   input commentInput {
     comment_movie_fk: Int!
     comment_user_fk: Int!
     comment_text: String!
-    comment_count: Int!
+    comment_arr: String!
     comment_timestamp: String
   }
 
