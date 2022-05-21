@@ -124,6 +124,13 @@ const typeDefs = gql`
     comment_timestamp: String
   }
 
+  input deleteCommentInput {
+    userId: Int!
+    commentId: Int!
+    commentArr: [Int!]
+    movieId: Int!
+  }
+
   type Query {
     getmovies: [Movie]
     getusers: [User]
@@ -143,7 +150,7 @@ const typeDefs = gql`
     updateMovie(movie: updateMovie!): String
 
     deleteMovie(movieId: Int!): String
-    deleteComment(commentId: Int!): String
+    deleteComment(delCommentInput: deleteCommentInput!): String
   }
 `;
 

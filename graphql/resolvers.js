@@ -117,9 +117,9 @@ const resolvers = {
     addComment: async (parent, args, ctx) => {
       const timestamp = moment().format("MMMM Do YYYY, h:mm:ss a");
       const data = args.commentInput;
-      const convertedArr = `{${data.comment_arr}}`;
+      const addUserArr = [...data.comment_arr, data.comment_user_fk];
       await db.query(queries.comment.movieCount, [
-        convertedArr,
+        `{${addUserArr}}`,
         data.comment_movie_fk,
       ]);
       await db.query(queries.comment.addComment, [
@@ -133,8 +133,13 @@ const resolvers = {
     },
 
     deleteComment: async (parent, args, ctx) => {
-      const commentId = args.commentId;
+      const { commentArr, userId, commentId, movieId } = args.delCommentInput;
+      const remUserArr = commentArr.filter((i) => i != userId);
+
+      await db.query(queries.comment.movieCount, [`{${remUserArr}}`, movieId]);
+
       db.query(queries.comment.deleteComment, [commentId]);
+
       return "Comment deleted";
     },
   },
