@@ -1,5 +1,6 @@
 const queries = {
   getmovies: "SELECT * FROM movies",
+  randommovies: "SELECT * FROM movies ORDER BY random() LIMIT $1",
   getusers: "SELECT * FROM users",
   addmovie: `INSERT INTO movies 
               (movie_name, movie_director, movie_release, movie_image,
