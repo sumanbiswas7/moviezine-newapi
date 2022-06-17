@@ -8,6 +8,11 @@ const resolvers = {
       const res = await db.query(queries.getmovies);
       return res.rows;
     },
+    getmovie: async (parent, args, ctx) => {
+      const movieId = args.movieId;
+      const res = await db.query(queries.movie, [movieId]);
+      return res.rows;
+    },
     randommovies: async (parent, args, ctx) => {
       const { limit } = args.limit;
       const res = await db.query(queries.randommovies, [limit]);

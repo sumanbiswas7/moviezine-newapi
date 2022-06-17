@@ -8,6 +8,7 @@ const queries = {
               VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
   movies:
     " SELECT * FROM movies LEFT JOIN users ON movies.movie_fk = users.user_id",
+  movie: "SELECT * FROM movies WHERE movie_id = $1",
   adduser:
     "INSERT INTO users (user_name,user_password,user_email,user_profile,user_country) VALUES ($1,$2,$3,$4,$5)",
   updateuser:

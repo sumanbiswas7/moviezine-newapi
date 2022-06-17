@@ -133,6 +133,7 @@ const typeDefs = gql`
 
   type Query {
     getmovies: [Movie]
+    getmovie(movieId: Int!): [Movie]
     randommovies(limit: Int!): [Movie]
     getusers: [User]
     movies: [MovieUser]
