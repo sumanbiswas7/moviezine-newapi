@@ -6,19 +6,16 @@ const resolvers = {
   Query: {
     getmovies: async () => {
       const res = await db.query(queries.getmovies);
-      db.end();
       return res.rows;
     },
     getmovie: async (parent, args, ctx) => {
       const movieId = args.movieId;
       const res = await db.query(queries.movie, [movieId]);
-      db.end();
       return res.rows;
     },
     randommovies: async (parent, args, ctx) => {
       const { limit } = args.limit;
       const res = await db.query(queries.randommovies, [limit]);
-      db.end();
       return res.rows;
     },
     getusers: async () => {
