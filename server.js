@@ -13,9 +13,6 @@ const server = new ApolloServer({
 });
 
 const PORT = process.env.PORT || 3999;
-db.connect().then(() => {
-  console.log(`🐘 Postgres connected sucessfuly`);
-  server.listen({ port: PORT }).then(({ url }) => {
-    console.log(`🚀 Server running at ${url}`);
-  });
+server.listen({ port: PORT }).then(({ url }) => {
+  console.log(`🚀 Server running at ${url}`);
 });
