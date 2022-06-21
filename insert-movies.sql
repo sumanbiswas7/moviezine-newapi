@@ -1,34 +1,4 @@
 INSERT INTO
-    users (
-        user_name,
-        user_email,
-        user_password,
-        user_profile
-    )
-VALUES
-    (
-        'Suman Biswas',
-        'suman@email.com',
-        'itssuman69',
-        'https://picsum.photos/300'
-    );
-
-INSERT INTO
-    users (
-        user_name,
-        user_email,
-        user_password,
-        user_profile
-    )
-VALUES
-    (
-        'Jacob Saminathan',
-        'jcsm@email.com',
-        'itsjackobppp',
-        'https://picsum.photos/300'
-    );
-
-INSERT INTO
     movies (
         movie_name,
         movie_director,
@@ -46,7 +16,7 @@ VALUES
         2,
         8.5,
         'https://movizine-imageupload.s3.ap-south-1.amazonaws.com/poster_interstellar.jpg',
-        'Science Fiction'
+        "Science Fiction"
     );
 
 INSERT INTO
