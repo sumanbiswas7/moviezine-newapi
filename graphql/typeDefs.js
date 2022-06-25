@@ -10,7 +10,7 @@ const typeDefs = gql`
     movie_image: String
     movie_description: String
     movie_type: String
-    movie_cast: String
+    movie_casts: String
     movie_fk: Int!
     movie_like_arr: [Int]
     movie_comment_arr: [Int]
@@ -40,7 +40,7 @@ const typeDefs = gql`
     movie_image: String
     movie_description: String
     movie_type: String
-    movie_cast: String
+    movie_casts: String
     movie_fk: Int!
     movie_like_arr: [Int]
     movie_comment_arr: [Int]
