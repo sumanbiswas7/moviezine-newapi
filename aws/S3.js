@@ -7,6 +7,12 @@ const bucketName = "movizine-imageupload";
 const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
 const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 
+aws.config.update({
+  accessKeyId,
+  secretAccessKey,
+  region: "ap-south-1",
+});
+
 const s3 = new aws.S3({
   region,
   accessKeyId,
