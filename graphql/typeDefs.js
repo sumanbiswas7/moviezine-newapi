@@ -72,6 +72,10 @@ const typeDefs = gql`
     user_profile: String
   }
 
+  type ImageUploadData {
+    url: String
+  }
+
   input addMovie {
     movie_name: String!
     movie_director: String!
@@ -139,6 +143,7 @@ const typeDefs = gql`
     movies: [MovieUser]
     likes: [UserLike]
     comments(movieId: Int!): [Comment]
+    uploadimage: ImageUploadData
   }
 
   type Mutation {

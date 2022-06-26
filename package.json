@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^3.7.0",
+    "aws-sdk": "^2.1162.0",
+    "crypto-js": "^4.1.1",
     "dotenv": "^16.0.1",
     "graphql": "^16.5.0",
     "moment": "^2.29.3",

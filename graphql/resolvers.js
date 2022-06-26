@@ -1,6 +1,7 @@
 const { db } = require("../database/database");
 const { queries } = require("../database/queries");
 const moment = require("moment");
+const { generateUploadUrl } = require("../aws/S3");
 
 const resolvers = {
   Query: {
@@ -34,6 +35,12 @@ const resolvers = {
       const movieId = args.movieId;
       const res = await db.query(queries.comment.comments, [movieId]);
       return res.rows;
+    },
+    uploadimage: async () => {
+      const url = await generateUploadUrl();
+      return {
+        url,
+      };
     },
   },
   Mutation: {

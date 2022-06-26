@@ -1,6 +1,12 @@
 const { ApolloServer } = require("apollo-server");
 const { resolvers } = require("./graphql/resolvers");
 const { typeDefs } = require("./graphql/typeDefs");
+const { generateUploadUrl } = require("./aws/S3");
+
+async function hi() {
+  await generateUploadUrl();
+}
+hi();
 
 const server = new ApolloServer({
   resolvers,
